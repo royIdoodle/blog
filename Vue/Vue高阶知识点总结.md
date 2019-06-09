@@ -4,7 +4,10 @@
 
 ## 目录
 
-* 
+* Object.defineProperty和Proxy用什么区别
+* Vue中的component、mixin和extend的区别
+* Vue中自定义指令的原理
+* Vuex的替代方案——EventBus如何实现
 
 
 
@@ -43,4 +46,100 @@ Vue 2.x中数据响应式是通过`Object.defineProperty`实现的，而Vue 3.x�
 
 ​	*  [如何监听数组变化?](https://juejin.im/post/5ade0e3df265da0b8e7f050b)
 
-​	* [Object.defineProperty和Proxy](https://segmentfault.com/a/1190000016570626)
+	* [Object.defineProperty和Proxy](https://segmentfault.com/a/1190000016570626)
+
+
+
+## Vue中的component、mixin和extend的区别
+
+
+
+### 共同点
+
+`component`、`mixin`和`extend`都是Vue的**全局API**。
+
+用法如下：
+
+```javascript
+// 全局注册一个组件 test-component
+Vue.component('test-component', Vue.extend({
+	template: '<div>{{msg}}</div>',
+  data () {
+    return {
+      msg: 'It is a msg!'
+    }
+  }
+}))
+```
+
+而`components`、`mixins`和`extends`都是实例化Vue时的**选项**。
+
+用户如下:
+
+```javascript
+// 引用一个组件testComponent
+import ComponentA from '...'
+import ComponentB from '...' 
+import someMixin from '...'
+new Vue({
+  name: 'one-component',
+  // "继承"了ComponentA                   
+  extends: ComponentA,
+  // 当前组件内注册ComponentB
+  components: {ComponentB},
+  // 将someMixin中的选项(data、属性、生命周期等)混入到当前组件
+  mixins: [someMixin]
+})
+```
+
+他们都是为了代码复用而生。`component`创建了可以复用的组件；`extend`创建了可以复用的构造器；`mixin`直接将需要复用的代码"混合"进入目标组件。
+
+
+
+### 功能的区别
+
+从"全局污染"来讲一下，对于这三个vue全局api的污染程度排名： `mixin` > `component` > `extend`
+
+`component`：注册或获取**全局组件**，注意是全局的。
+
+`extend`是生成了一个新的Vue构造器，之后可以通过该构造器生成新的组件，已达到复用的目的。
+
+`mixin`比较狠，如果一旦使用了`Vue.mixin()`则影响注册之后所有创建的每个 Vue 实例，影响范围巨大，一定要慎用。
+
+```javascript
+// myMixin.js 代码
+export default {
+  created () {
+    console.log(this.$options.name)
+  }
+}
+
+// 入口文件 main.js 代码
+import myMixin from './myMixin'
+...
+Vue.mixin(myMixin)
+...
+```
+
+以上代码运行后，会将使用到的所有组件的`name`全部都打印出来，因为每个组件的`created`生命周期都被混入了这段代码——`console.log(this.$options.name)`。
+
+
+
+
+
+
+
+### 参数的区别
+
+
+
+
+
+### 返回值的区别
+
+`component`返回的永远是一个**组件**。
+
+
+
+### 参考文章：
+
