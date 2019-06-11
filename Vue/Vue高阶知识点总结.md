@@ -125,9 +125,74 @@ Vue.mixin(myMixin)
 
 
 
-作为选项的`extends`和`mixins`的不同点如下：
+#### 其他不同
 
-* 二者的值不同：`extends`的值只能为一个，`mixins`的值是一个数组。
+* 当他们作为选项时，接受的值不同：`extends`的值只能为一个，`mixins`的值是一个数组，`components`的值是一个对象。
+
+* 当遇到命名冲突时，`extend`和`mixin`的行为不同，其中`mixin`的"合并"规则相对比较复杂，下面的例子可以说明：
+
+```javascript
+// myMixin 代码
+export default {
+  data () {
+    return {
+      bar: 'bar'
+    }
+  },
+  methods: {
+    sayHello () {
+      console.log('Hello! in my mixin')
+    }
+  },
+  mounted () {
+    console.log('mounted in my Mixin')
+  }
+}
+
+// 组件代码
+import myMixin from './mixin/myMixin'
+
+export default {
+  name: 'app',
+  mixins: [myMixin],
+  data () {
+    return {
+      // data中遇到同名情况，以组件优先。所以最终的this.msg的值为'app message'
+      msg: 'app message',
+      foo: 'foo'
+    }
+  },
+  methods: {
+    // 遇到同名方法的情况，以组件优先。所以最终运行结果是'hello! in app.vue'
+    sayHello () {
+      console.log('hello! in app.vue')
+    }
+  },
+  mounted () {
+    // 遇到同名生命周期函数的情况，会将他们合并为一个数组，因此都将被调用。另外，混入对象的钩子将在组件自身钩子之前调用。所以最终会先输出‘mounted in my Mixin’再输出‘mounted in app‘
+    console.log('mounted in app')
+  },
+  created () {
+    this.sayHello()
+    console.log(this.$data)
+  }
+}
+```
+
+最终运行结果如下：
+
+```javascript
+// hello! in app.vue
+// {bar: "bar", foo: "foo", msg: "app message"}
+// mounted in my Mixin
+// mounted in app
+```
+
+而如果换成了`extend`时，则规则很简单
+
+
+
+* 遇到命名
 * 应用场景不同：正由于二者值不同，所以他们的应用场景也不同。个人认为，可以将`mixins`理解为是一种**渐进增强**，一个应用中可能需要很多*用来完成独立功能*的代码单元，比如缓存处理、http请求等等，可以将他们都拆分成一个个`mixin`，如果哪个组件（页面）需要，则可以"混入"进来，最终达到逐步增强目标组件的目的。然后，可以将`extends`理解为**继承**，
 
 
