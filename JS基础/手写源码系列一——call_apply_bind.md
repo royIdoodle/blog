@@ -72,3 +72,41 @@ Function.prototype.myCall = function(context, ...args) {
 
 
 
+#### 手写apply方法
+
+```javascript
+Function.prototype.myApply = function(context, args) {
+  // 判断是否是undefined和null
+  if (typeof context === 'undefined' || context === null) {
+    context = window
+  }
+  let fnSymbol = Symbol()
+  context[fnSymbol] = this
+  let fn = context[fnSymbol] (...args)
+  return fn
+}
+```
+
+思路和`call`是一样的只是传参不同方式而已
+
+
+
+#### 手写bind方法
+
+```javascript
+Function.prototype.myBind = function(context) {
+  // 判断是否是undefined和null
+  if (typeof context === 'undefined' || context === null) {
+    context = window
+  }
+  let fnSymbol = Symbol()
+  context[fnSymbol] = this
+  let fn = context[fnSymbol]
+  return fn
+}
+```
+
+
+
+
+
