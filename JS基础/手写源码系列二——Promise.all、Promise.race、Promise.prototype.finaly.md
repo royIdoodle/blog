@@ -119,7 +119,7 @@ Promise.myRace = function (iterators) {
 
 ## Promise.prototype.finally()
 
-回顾一下正常用法。
+#### 回顾一下正常用法。
 
 **`finally()`** 方法返回一个[`Promise`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)。在promise结束时，无论结果是fulfilled或者是rejected，都会执行指定的回调函数。这为在`Promise`是否成功完成后都需要执行的代码提供了一种方式。
 
@@ -140,3 +140,36 @@ fetch(myRequest).then(function(response) {
   .finally(function() { isLoading = false; });
 ```
 
+#### 手写实现
+
+```javascript
+Promise.prototype.myFinally = function finallyPolyfill(callback) {
+    return this.then(function(value) {
+            return Promise.resolve(callback()).then(function() {
+                return value;
+            });
+        }, function(reason) {
+            return Promise.resolve(callback()).then(function() {
+                Promise.reject(reason);
+            });
+        });
+};
+```
+
+
+
+核心思路：
+
+1. 当前`this`指向的是当前`Promise`对象，所以可以直接用`this.then()`
+2. then回调中的两个参数，一个是成功时的回调，另一个是失败是的回调，利用这个两个参数处理当前promise对象的两种不同情况
+3. 无论如何都要调用传入的callback函数，并且将当前promise的决议值继续传递下去
+
+
+
+一些细节：
+
+callback传入的有可能仍然是一个Promsie对象，如果真的是Promise对象，要等该promise决议之后才能执行之后then()方法，但是这个then()中拿到的是finally()之前的决议值，有种"决议值穿透"的感觉。
+
+
+
+PS：我在网上找到了最权威的写法，**毫无破绽**  https://github.com/matthew-andrews/Promise.prototype.finally/blob/master/finally.js
