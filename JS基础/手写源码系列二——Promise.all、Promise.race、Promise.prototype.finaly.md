@@ -1,6 +1,6 @@
 ## 手写Promise相关方法
 
-Promise是面试中经常遇到的，如果面试中面试官文你`Promise.all()`怎么用，那你面试的岗位可能是差不多**高级前端开发**的岗位，但如果让你手写一个`Promise.all()`那你面试的岗位应该就是**资深/专家前端开发**的岗位了
+Promise是面试中经常遇到的，如果面试中面试官问你`Promise.all()`怎么用，那你面试的岗位可能是差不多**高级前端开发**的岗位，但如果让你手写一个`Promise.all()`那你面试的岗位应该就是**资深/专家前端开发**的岗位了
 
 
 
@@ -62,7 +62,7 @@ Promise.myAll = function (iterators) {
 
 1. `Promise.myAll()`返回的肯定是一个`promise`对象，所以可以直接写一个`return new Promise((resolve, reject) => {})`(这应该是一个惯性思维)
 2. 遍历传入的参数，用`Promise.resolve()`将参数"包一层"，使其变成一个`promise`对象
-3. 关键点是何时"决议"，也就是`resolve`出来，所以这里做了计数器（`count`），每个内部promise对象决议后就将计数器加一，并判断加一后的大小是否与传入对象的数量相等，如果相等则调用`resolve()`，如果任何一个promise对象失败，则调用`reject()`方法。
+3. 关键点是何时"决议"，也就是何时`resolve`出来，在这里做了计数器（`count`），每个内部promise对象决议后就将计数器加一，并判断加一后的大小是否与传入对象的数量相等，如果相等则调用`resolve()`，如果任何一个promise对象失败，则调用`reject()`方法。
 
 一些细节：
 
