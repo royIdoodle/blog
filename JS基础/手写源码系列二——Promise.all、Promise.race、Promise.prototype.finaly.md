@@ -37,24 +37,25 @@ Promise.all([promise1, promise2, promise3]).then(function(values) {
 
 ```javascript
 Promise.myAll = function (iterators) {
-	const len = Array.from(iterators).length
-	let count = 0
-	let resultList = []
-	return new Promise((resolve, reject) => {
-        for (let p of iterators) {
-            Promise.resolve(p)
-                .then((result) => {
-                    count++
-                    resultList.push(result)
-                    if (count === len) {
-                        resolve(resultList)
-                    }
-                })
-                .catch(e => {
-                    reject(e)
-                })
-        }
-	})
+  const promises = Array.from(iterators)
+  const len = promises.length
+  let count = 0
+  let resultList = []
+  return new Promise((resolve, reject) => {
+    promises.forEach((p, index) => {
+      Promise.resolve(p)
+        .then((result) => {
+          count++
+          resultList.push(result)
+          if (count === len) {
+            resolve(resultList)
+          }
+        })
+        .catch(e => {
+          reject(e)
+        })
+    })
+  })
 }
 ```
 
