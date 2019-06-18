@@ -46,7 +46,7 @@ Promise.myAll = function (iterators) {
       Promise.resolve(p)
         .then((result) => {
           count++
-          resultList.push(result)
+          resultList[index] = result
           if (count === len) {
             resolve(resultList)
           }
