@@ -78,7 +78,7 @@ JSON.stringify(
 
 
 
-#### JSON.stringfy()的代码
+#### JSON.stringfy()和JSON.parse()的代码
 
 ```javascript
 if (!window.JSON) {
@@ -147,6 +147,10 @@ if (!window.JSON) {
 ```
 
 
+
+#### 一些细节
+
+* 在JSON中，所有字符串都需要用双引号包起来
 
 
 
