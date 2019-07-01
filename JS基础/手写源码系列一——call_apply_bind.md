@@ -95,14 +95,14 @@ Function.prototype.myApply = function(context, args) {
 
 ```javascript
 Function.prototype.myBind = function(context) {
-  // 判断是否是undefined和null
-  if (typeof context === 'undefined' || context === null) {
-    context = window
-  }
-  let fnSymbol = Symbol()
-  context[fnSymbol] = this
-  let fn = context[fnSymbol]
-  return fn
+ // 判断是否是undefined和null
+ if (typeof context === "undefined" || context === null) {
+   context = window;
+ }
+ self = this;
+ return function(...args) {
+   return self.apply(context, args);
+ }
 }
 ```
 
