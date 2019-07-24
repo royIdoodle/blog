@@ -73,6 +73,8 @@ moduleIds: “deterministic"
 
 新算法会以确定的方式为模块(module)和代码块(chunk)分配一个非常短（3或4个字符）的数字ID。所以，今后再生产环境中，如果你修改了vendor bundle中的一个依赖，那些并没有发生变化的模块ID也不会改变，所以仍然可以被浏览器缓存，提高资源加载的性能。
 
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/ids.png)
+
 
 
 #### NodeJS的polyfill脚本被移除
@@ -85,25 +87,27 @@ moduleIds: “deterministic"
 
 
 
+#### 废弃了一些特性
+
+那些在v4中已经被抛弃但是仍然可以被使用的特性，将再v5中彻底被废弃。
+
+所以在迁移到v5时，请留言那些在v4中抛出“弃用警告”（deprecation warnings）的提示。
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/wp5warning.png)
+
+除此之外，还有一些东西也被移除了，但是在v4中没有抛出弃用警告，例如IgnorePlugin和BannerPlugin，现在必须传递一个options对象。
+
+
+
 #### 引入了更多新东西
 
-v5版本的webpack将不再支持node 6，转而最低要求为**node 8**。除此之外，webpack 5还引入了webAssembly、Hashing、多线程、还有workers。
+**webpack 5 要求node的最低版本为 Node 8。**不再是之前的Node 6。
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/node8.jpeg)
+
+另外，webpack 5还引入了webAssembly、Hashing、多线程、还有workers。
 
 
-
-// TODO 
-
-> webpack 5 将放弃node 6，转而基于node 8开发【现代化】
-
-> Webpack 5将对于webpack 4中的所有警告改为异常【现代化】
-
-> webpack 5将支持web Assembly，hashing，多线程，workers【现代化】
-
-> 移除了哪些为了兼容低版本的“腻子脚本”【现代化】
->
-> 确定性代码块（chunk）和模块ID
->
-> Webpack 支持多线程
 
 
 
