@@ -1,6 +1,6 @@
 # webpack 5 带来了什么？
 
-![img](https://cdn-images-1.medium.com/max/1600/1*gdoQ1_5OID90wf1eLTFvWw.png)
+
 
 ## Webpack 5已经到来
 早在今年（2019年）的2月份，Webpack核心团队的Sean Larkin就做过一次关于webpack 5新特性的演讲，为大家讲述了webpack 5目前的开发进展，还有webpack 5会有哪些新特性。
@@ -42,7 +42,7 @@ npm install webpack@next webpack-cli --save-dev
 
 大致流程如下：
 
-![img](https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/01/1484692838webpack-dependency-tree.png)
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/webpackprocess.png)
 
 webpack 5利用持久缓存优化了整个流程，当检测到某个文件变化时，依照“依赖图”，只对修改过的文件进行编译，从而大幅提高了编译速度。
 
@@ -91,7 +91,7 @@ moduleIds: “deterministic"
 
 那些在v4中已经被抛弃但是仍然可以被使用的特性，将再v5中彻底被废弃。
 
-所以在迁移到v5时，请留言那些在v4中抛出“弃用警告”（deprecation warnings）的提示。
+所以在迁移到v5时，请留意那些在v4中抛出“弃用警告”（deprecation warnings）的提示。
 
 ![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/wp5warning.png)
 
@@ -108,6 +108,10 @@ moduleIds: “deterministic"
 另外，webpack 5还引入了webAssembly、Hashing、多线程、还有workers。
 
 
+
+## 总结
+
+今年的前端小伙伴们要学习的东西还真多，Flutter、Vue 3.0、现在又来了Webpack 5。真是“学无止境”~~
 
 
 
