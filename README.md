@@ -16,7 +16,7 @@
 ### 每月Flag
 ![img](http://5b0988e595225.cdn.sohucs.com/images/20181229/68105884bc1f47f6a926d20874d744f0.jpeg)
 > 7月
- * webpack 5 研究
+ * ~~webpack 5 研究~~
  * webpack细节原理专研
  * 手写源码系列：《new、instanceof》、《Promise本体》
  * 算法：《递归》
