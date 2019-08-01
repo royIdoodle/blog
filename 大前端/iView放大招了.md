@@ -1,10 +1,6 @@
-# iView放大招了!
+# iView放大招了!一口气发布3款新产品
 
-
-
-![video](https://v.qq.com/x/page/f09059g7c4b.html)
-
-大家熟知的vue ui组件库——iView 在2019年7月27日举行了`iView 2019新品发布会`
+大家熟知的基于vue的ui组件库——iView 日前在北京举行了`iView 2019新品发布会`
 
 ![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/annouce.jpg)
 
@@ -78,4 +74,76 @@ iView UI目前的主要定位是面向后端开发者，他们主要由以下特
 [iView Admin Pro视频地址](https://v.qq.com/x/page/f09059g7c4b.html)
 
 iView Admin Pro面向的是企业级解决方案，并做了针对性地UI设计，整体风格让人眼前一亮。
+
+里面封装了更多一个中后台系统常用的组件、指令，让开发变得更加快捷稳定。
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/adminProDemo.png)
+
+本人觉得`iView Admin Pro`中比较有意思的地方是“鉴权”的使用方法，共有5种鉴权场景：
+
+* 路由鉴权
+* 菜单鉴权
+* 功能块鉴权
+* 功能点鉴权
+* 鉴权指令
+
+
+
+## iView 4.0 预告
+
+大家一直使用的开源iView UI将在2019年的Q4发布，主要有以下方面的更新：
+
+- 更美观。基础字号加大，对组件的 UI 进行整体的提升，并对许多老的组件进行样式上的迭代。
+- 更强大。增加多个全新的组件，全局配置也将更丰富，超过数十个组件的功能迭代。
+- 几乎可以直接升级。升级成本很低，不用担心升级问题。
+
+
+
+## iView Mpvue
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/iViewWeapp.png)
+
+iView团队与美团的mpvue团队联合，将原有基于微信小程序原生开发的`iView Weapp`改为基于mpvue开发的iView Mpvue。这样全新的iView Mpvue有望实现跨多端的使用，如微信小程序、百度智能小程序、头条小程序、支付宝小程序等。
+
+
+
+## 开始商业化了！
+
+重点来了！`iView Pro`和`iView Admin Pro`都是收费使用的。重要是出售授权的方式。
+
+大家可以通过浏览官网进行进一步的了解：[pro.iviewui.com](https://pro.iviewui.com)
+
+#### iView Pro售价
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/iViewProCharge.png)
+
+
+
+#### iView Admin Pro售价
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/iViewAdminProCharge.png)
+
+
+
+小编本人觉得前端应用框架收费并没有什么不妥，反而收费后你可以得到更多的服务，在国外商业化的前端框架有很多。比如：
+
+#### 前端可视化框架——`highcharts`
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/highcharts.png)
+
+#### 前端组件库——Kendo UI
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/kendoui.png)
+
+
+
+## 结语
+
+本次的iView发布会的全部收入（5700元）像往常一样，将全部捐献给`Vue`团队。
+
+每年的7月28日是iView的“生日”，每到这个时间节点iView都会有新品发布出来。期望明年会为大家贡献出更好的作品。
+
+最后以发布会的最后一页ppt作为本文的结尾。
+
+![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/end.jpeg)
 
