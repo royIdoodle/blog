@@ -25,6 +25,8 @@
 > 8月
  * PM2底层原理
  * Vue Hoc 实践
+ * Egg.js研究
+ * React学习
 
 #### 如果觉得我写的内容有帮到你，或者想第一时间知道文章更新，可以微信扫描下方二维码，关注我的公众号——【较真的前端】
 ![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/welcome.jpeg)
