@@ -19,6 +19,8 @@
 * 终端监控
 * 停止不稳定的进程（避免无限循环）
 * 不停机重载
+* http api接口
+* 等等
 
 
 
@@ -82,6 +84,12 @@ pm2 monit ： 对服务进行监控。
 ```
 
 
+
+#### 查看应用状态
+
+通过`pm2 list`命令可以查看所有应用的运行状况
+
+![PM2 list](http://pm2.keymetrics.io/images/pm2-list.png)
 
 
 
