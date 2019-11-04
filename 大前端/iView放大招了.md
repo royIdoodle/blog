@@ -1,4 +1,4 @@
-# iView放大招了!一口气发布3款新产品
+# iView放大招了!一口气发布3款新品
 
 大家熟知的基于vue的ui组件库——iView 日前在北京举行了`iView 2019新品发布会`
 
@@ -7,9 +7,9 @@
 本次发布的主要内容有：
 
 * iView Pro
-* iView Pro Admin
+* iView Admin Pro
 * iView 4.0的预告
-* iView weapp + mpvue
+* iView Mpvue
 
 ![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/iview_all.png)
 
@@ -32,9 +32,10 @@ iView UI目前的主要定位是面向后端开发者，他们主要由以下特
 * 既要写后端服务、还要搭前端网站
 * 项目紧、人员少
 
-所以`iView Pro`应运而生，他主要是将很多常用的业务组件、便捷的过滤器和指令、样式动效等进行封装，让开发者更加快速的大家一个前端网站、或者一个中台系统。
+所以`iView Pro`应运而生，他主要是将很多常用的业务组件、便捷的过滤器和指令、样式动效等进行封装，让开发者更加快速的搭建一个前端网站、或者一个中台系统，大大降低了构建前端系统的门槛。
 
-那最常用的`Login`组件为例
+拿最常用的`Login`组件为例
+
 ![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/login_view.png?x-oss-process=style/richbox_pic)
 
 使用`iView Pro`只需要如下的几行代码就可以搞定
@@ -49,7 +50,7 @@ iView UI目前的主要定位是面向后端开发者，他们主要由以下特
 
 除了组件以外，还有常用的一些指令，比如：
 
-* 监听某个组件尺寸发生的指令——`v-resize`
+* 监听某个组件尺寸发生变化的指令——`v-resize`
 * 文本按行省略指令——`v-line-clamp`
 * 样式指令——`v-width`、`v-height` 、`v-padding`等等
 
@@ -75,11 +76,11 @@ iView UI目前的主要定位是面向后端开发者，他们主要由以下特
 
 iView Admin Pro面向的是企业级解决方案，并做了针对性地UI设计，整体风格让人眼前一亮。
 
-里面封装了更多一个中后台系统常用的组件、指令，让开发变得更加快捷稳定。
+内置了更多中后台系统常用的组件、指令，让开发变得更加快捷稳定。
 
 ![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/adminProDemo.png)
 
-本人觉得`iView Admin Pro`中比较有意思的地方是“鉴权”的使用方法，共有5种鉴权场景：
+本人觉得`iView Admin Pro`中比较有意思的地方是“鉴权”的使用方法，`iView Admin Pro`中将其细化为5种鉴权场景，让使用者可以精准控制：
 
 * 路由鉴权
 * 菜单鉴权
@@ -103,13 +104,13 @@ iView Admin Pro面向的是企业级解决方案，并做了针对性地UI设计
 
 ![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/iViewWeapp.png)
 
-iView团队与美团的mpvue团队联合，将原有基于微信小程序原生开发的`iView Weapp`改为基于mpvue开发的iView Mpvue。这样全新的iView Mpvue有望实现跨多端的使用，如微信小程序、百度智能小程序、头条小程序、支付宝小程序等。
+iView团队与美团的mpvue团队联合，将原有基于微信小程序原生开发的`iView Weapp`改为基于mpvue开发的`iView Mpvue`。这样全新的`iView Mpvue`有望实现支持多端，如微信小程序、百度智能小程序、头条小程序、支付宝小程序等。
 
 
 
 ## 开始商业化了！
 
-重点来了！`iView Pro`和`iView Admin Pro`都是收费使用的。重要是出售授权的方式。
+重点来了！`iView Pro`和`iView Admin Pro`都是收费使用的。主要是以出售授权的方式。
 
 大家可以通过浏览官网进行进一步的了解：[pro.iviewui.com](https://pro.iviewui.com)
 
@@ -125,7 +126,7 @@ iView团队与美团的mpvue团队联合，将原有基于微信小程序原生�
 
 
 
-小编本人觉得前端应用框架收费并没有什么不妥，反而收费后你可以得到更多的服务，在国外商业化的前端框架有很多。比如：
+小编个人觉得前端应用框架收费并没有什么不妥，反而收费后你可以得到更多的服务，在国外已经商业化的前端框架有很多。比如：
 
 #### 前端可视化框架——`highcharts`
 
@@ -146,4 +147,3 @@ iView团队与美团的mpvue团队联合，将原有基于微信小程序原生�
 最后以发布会的最后一页ppt作为本文的结尾。
 
 ![img](https://zens-pic.oss-cn-shenzhen.aliyuncs.com/static/gift/msc/iview/end.jpeg)
-
