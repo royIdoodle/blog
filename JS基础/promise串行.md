@@ -35,6 +35,29 @@ Task D |                         ------>|
 > > 限制：
 > > 不添加任何依赖，仅使用 Promise，不使用 Generator 或 async
 
+如果允许使用Generator或者async/await来写的话，会很简单。
+
+代码如下：
+```javascript
+function excute(tasks) {
+	let resultList = []
+	return tasks.reduce(
+    (previousPromise, currentPromise) => previousPromise.then(() => {
+		return new Promise(resolve => {
+			let promise = typeof currentPromise === 'function'? currentPromise(): currentPromise;
+			promise.then(result => {
+				resultList.push(result)
+				resolve()
+			}).catch(() => {
+				resultList.push(null)
+				resolve()
+			})
+		})
+	}),
+    Promise.resolve()
+	).then(last => resultList)
+}
+```
 
 
 ## 
