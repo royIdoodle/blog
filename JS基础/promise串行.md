@@ -35,27 +35,57 @@ Task D |                         ------>|
 > > 限制：
 > > 不添加任何依赖，仅使用 Promise，不使用 Generator 或 async
 
-如果允许使用Generator或者async/await来写的话，会很简单。
+如果允许使用`Generator`或者`async/await`来写的话，会很简单，文章末尾再实现`async/await`的方法。
+
+
+
+先做完成一下测试用例的代码：
+
+```javascript
+const Task = (result, isSuccess = true) => {
+  return () => new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (isSuccess) {
+        console.log(`success: ${result}`);
+        resolve(result);
+      } else {
+        console.log(`error: ${result}`);
+        reject(result);
+      }
+    }, 1000);
+  });
+}
+
+
+excute([
+  Task('A'),
+  Task('B'),
+  Task('X', false),
+  Task('C'),
+]).then(resultList => {
+  console.log(resultList)
+})
+```
+
+
+
+
 
 代码如下：
 ```javascript
 function excute(tasks) {
-	let resultList = []
 	return tasks.reduce(
-    (previousPromise, currentPromise) => previousPromise.then(() => {
+    (previousPromise, currentPromise) => previousPromise.then((resultList) => {
 		return new Promise(resolve => {
-			let promise = typeof currentPromise === 'function'? currentPromise(): currentPromise;
-			promise.then(result => {
-				resultList.push(result)
-				resolve()
+			currentPromise().then(result => {
+				resolve(resultList.concat(result))
 			}).catch(() => {
-				resultList.push(null)
-				resolve()
+				resolve(resultList.concat(null))
 			})
 		})
 	}),
-    Promise.resolve()
-	).then(last => resultList)
+    Promise.resolve([])
+	)
 }
 ```
 
