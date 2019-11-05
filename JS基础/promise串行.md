@@ -57,23 +57,58 @@ const Task = (result, isSuccess = true) => {
 }
 
 
-excute([
+execute([
   Task('A'),
   Task('B'),
   Task('X', false),
   Task('C'),
 ]).then(resultList => {
+  // 这里期望打印 ["A", "B", null, "C"]
   console.log(resultList)
 })
 ```
 
 
+思路大致如下图：
+先做一个`Promise`实例，然后把每个`Task`循环的放置到上一个`promise`的`then`回调里。
+<img src="/Users/wangchong/Library/Application Support/typora-user-images/image-20191105131728245.png" alt="image-20191105131728245" style="zoom:40%;" />
 
+需要注意的几点：
+ 1. 无论每个Task是成功还是失败，它都不能阻断下一个Task的执行
+ 2. 最后的then需要把每个Task的执行结果"决议"出去
 
+对策：
+
+1. 每一个Task外层包装一层Promise，捕获Task的reject状态
+2. 可以利用一个中间变量，缓存所有Task的输出结果，然后在最后一个Promise的then里把中间变量“决议”出去
+
+第一版代码如下：
+```javascript
+function execute(tasks) {
+    let resultList = [];
+	return tasks.reduce(
+    (previousPromise, currentPromise) => previousPromise.then((resultList) => {
+		return new Promise(resolve => {
+			currentPromise().then(result => {
+                resultList.push(result);
+				resolve()
+			}).catch(() => {
+                  resultList.push(null);
+		          resolve(resultList.concat(null))
+			})
+		})
+	}),
+    Promise.resolve([])
+	).then(() => resultList);
+}
+```
+
+### 改进
+其实Promise的链式操作是可以传递值的，所以可以利用这个特性，省去中间变量，
 
 代码如下：
 ```javascript
-function excute(tasks) {
+function execute(tasks) {
 	return tasks.reduce(
     (previousPromise, currentPromise) => previousPromise.then((resultList) => {
 		return new Promise(resolve => {
