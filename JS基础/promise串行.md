@@ -98,7 +98,7 @@ function execute(tasks) {
 			})
 		})
 	}),
-    Promise.resolve([])
+    Promise.resolve()
 	).then(() => resultList);
 }
 ```
@@ -126,4 +126,22 @@ function execute(tasks) {
 
 
 ## 
+
+### aysnc/await版本
+
+代码如下:
+
+```javascript
+const execute = async (tasks = []) => {
+  const resultList = [];
+  for(task of tasks) {
+    try {
+      resultList.push(await task());
+    } catch (e) {
+      resultList.push(null);
+    }
+  }
+  return resultList;
+}
+```
 
