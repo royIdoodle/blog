@@ -71,7 +71,7 @@ execute([
 
 思路大致如下图：
 先做一个`Promise`实例，然后把每个`Task`循环的放置到上一个`promise`的`then`回调里。
-<img src="/Users/wangchong/Library/Application Support/typora-user-images/image-20191105131728245.png" alt="image-20191105131728245" style="zoom:40%;" />
+<img src="https://raw.githubusercontent.com/royIdoodle/blog/master/assert/promise%E4%B8%B2%E8%A1%8C%E6%80%9D%E8%B7%AF.png" style="zoom:40%;" />
 
 需要注意的几点：
  1. 无论每个Task是成功还是失败，它都不能阻断下一个Task的执行
