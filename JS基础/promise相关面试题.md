@@ -7,6 +7,7 @@
  * 如何实现一个`Promise.all()`
  * 如何实现一个`Promise.race()`
  * 如何实现一个Promise的串行？
+ * 介绍一下`Promise.resolve`和`Promise.reject`两个方法
  
 ## 问题答案
 
@@ -106,4 +107,27 @@ Promise.myRace = function (iterators) {
     })
 }
 
+```
+
+```markdown
+如何实现一个Promise的串行？
+```
+
+这个之前也写过一篇文章，可以看下详细解答，[Promise串行](https://zhuanlan.zhihu.com/p/90850451)
+代码如下：
+```ecmascript 6
+function execute(tasks) {
+    return tasks.reduce(
+    (previousPromise, currentPromise) => previousPromise.then((resultList) => {
+        return new Promise(resolve => {
+            currentPromise().then(result => {
+                resolve(resultList.concat(result))
+            }).catch(() => {
+                resolve(resultList.concat(null))
+            })
+        })
+    }),
+    Promise.resolve([])
+    )
+}
 ```
