@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Debounce</title>
+  <style>
+    div {
+      width: 500px;
+      height: 500px;
+      margin-left: 200px;
+      background-color: #c0c0c0;
+      color: white;
+      text-align: center;
+      vertical-align: center;
+      line-height: 500px;
+      font-size: 3em;
+    }
+  </style>
+</head>
+<body>
+  <div onmousemove="mouseMoveHandler">
+    0
+  </div>
+
+  <script type="application/javascript">
+
+    let node = document.getElementsByTagName('div')[0]
+    node.addEventListener('mousemove', debounce(mouseMoveHandler))
+    var count = 0;
+    function mouseMoveHandler (event) {
+      event.target.innerHTML = ++count;
+    }
+    
+    
+    function debounce (fn, delay = 200) {
+      let timer = null;
+      return function (...args) {
+        timer && clearTimeout(timer);
+        timer = setTimeout(() => {
+          fn(...args);
+        }, delay);
+      }
+    }
+  </script>
+</body>
+</html>
