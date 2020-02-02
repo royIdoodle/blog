@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Throttle</title>
+  <style>
+    div {
+      width: 500px;
+      height: 500px;
+      margin-left: 200px;
+      background-color: mediumslateblue;
+      color: white;
+      text-align: center;
+      vertical-align: center;
+      line-height: 500px;
+      font-size: 3em;
+    }
+  </style>
+</head>
+<body>
+  <div onmousemove="mouseMoveHandler">
+    0
+  </div>
+
+  <script type="application/javascript">
+
+    let node = document.getElementsByTagName('div')[0]
+    node.addEventListener('mousemove', throttle(mouseMoveHandler))
+    var count = 0;
+    function mouseMoveHandler (event) {
+      event.target.innerHTML = ++count;
+    }
+    
+    
+    function throttle (fn, time = 200) {
+      let valid = true;
+      return function (...args) {
+        if (!valid) {
+          return
+        }
+        valid = false;
+        setTimeout(() => {
+          fn(...args)
+          valid = true;
+        }, time)
+      }
+    }
+  </script>
+</body>
+</html>
