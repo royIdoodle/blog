@@ -8,7 +8,7 @@ function getName(doc){
 
 function getPhone(doc) {
   var phone = doc.querySelectorAll('.kv-attribute');
-  var [td] = Array.from(phone).filter(d => d.innerText.length === 11 && /\d/g.test(d.innerText));
+  var [td] = Array.from(phone).filter(d => /^1[3456789]\d{9}$/.test(d.innerText));
   return td.innerText
 }
 
