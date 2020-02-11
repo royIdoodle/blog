@@ -8,6 +8,7 @@
  * 如何实现一个`Promise.race()`
  * 如何实现一个Promise的串行？
  * 介绍一下`Promise.resolve`和`Promise.reject`两个方法
+ * 如何实现一个支持`cancel`的`Promise`
  
 ## 问题答案
 
