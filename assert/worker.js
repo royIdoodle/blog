@@ -1,6 +1,6 @@
-let d
-let hrefList = []
-let infoTable = []
+var d
+var hrefList = []
+var infoTable = []
 
 function getName(doc){
   return doc.querySelector('#w4 .kv-child-table td').innerText
@@ -25,7 +25,7 @@ function print () {
 }
 
 function createIframe (href) {
-  document.body.removeChild(d)
+  d && document.body.removeChild(d)
   d = document.createElement('iframe');
   d.src = href;
   d.onload = function() {
@@ -44,3 +44,5 @@ function queryUrlList () {
   hrefList = Array.from(aList).filter(doc => /view\?id=/.test(doc.href)).map(doc => doc.href)
   createIframe(hrefList.shift())
 }
+
+queryUrlList()
