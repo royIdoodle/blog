@@ -18,12 +18,12 @@
 > 7月
  * ~~webpack 5 研究~~
  * webpack细节原理专研
- * 手写源码系列：《new、instanceof》、《Promise本体》
+ * ~~手写源码系列：《new、instanceof》、《Promise本体》~~
  * 算法：《递归》
  * 小程序：自定义标题栏的稳妥实现
 
 > 8月
- * PM2底层原理
+ * ~~PM2底层原理~~
  * Vue Hoc 实践
  * Egg.js研究
  * React学习
