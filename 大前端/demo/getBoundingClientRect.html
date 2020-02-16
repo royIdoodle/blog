@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>getBoundingClientReact</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .placeholder {
+      height: 1200px;
+      width: 400px;
+      background-color: #c0c0c0;
+    }
+    #rect {
+      height: 1000px;
+      width: 400px;
+      background-color: #2c3e50;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="placeholder"></div>
+  <div id="rect"></div>
+  <div class="placeholder"></div>
+  <script type="application/javascript">
+    console.log('>>>>');
+    const viewportHeight = window.innerHeight;
+    console.log({ viewportHeight })
+    const el = document.getElementById('rect');
+    document.onscroll = function(event) {
+      const { top, bottom } = el.getBoundingClientRect()
+      const toTop = viewportHeight - top
+      const toBottom = viewportHeight - bottom
+      console.log({
+        top,
+        bottom,
+        toTop,
+        toBottom,
+      })
+      let isInView = false;
+
+      if ((top > 0 && toTop > 0) ||
+        (bottom > 0 && toBottom - bottom > 0)) {
+        isInView = true
+      } else {
+        isInView = false
+      }
+      console.log({isInView})
+    }
+
+  </script>
+</body>
+</html>
