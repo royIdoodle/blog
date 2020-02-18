@@ -30,15 +30,17 @@
     function mouseMoveHandler (event) {
       event.target.innerHTML = ++count;
     }
-    
-    
+
+
     function debounce (fn, delay = 200) {
       let timer = null;
       return function (...args) {
-        timer && clearTimeout(timer);
-        timer = setTimeout(() => {
-          fn(...args);
-        }, delay);
+        if(!timer) {
+          timer = setTimeout(() => {
+            fn(...args);
+            timer = null
+          }, delay);
+        }
       }
     }
   </script>
