@@ -9,7 +9,7 @@
       padding: 0;
     }
     .placeholder {
-      height: 1200px;
+      height: 120vh;
       width: 400px;
       background-color: #c0c0c0;
     }
@@ -26,30 +26,22 @@
   <div id="rect"></div>
   <div class="placeholder"></div>
   <script type="application/javascript">
-    console.log('>>>>');
-    const viewportHeight = window.innerHeight;
-    console.log({ viewportHeight })
     const el = document.getElementById('rect');
-    document.onscroll = function(event) {
+    let inView = null;
+    function isInView (el) {
       const { top, bottom } = el.getBoundingClientRect()
-      const toTop = viewportHeight - top
-      const toBottom = viewportHeight - bottom
-      console.log({
-        top,
-        bottom,
-        toTop,
-        toBottom,
-      })
-      let isInView = false;
-
-      if ((top > 0 && toTop > 0) ||
-        (bottom > 0 && toBottom - bottom > 0)) {
-        isInView = true
-      } else {
-        isInView = false
-      }
-      console.log({isInView})
+      const viewportHeight = window.innerHeight;
+      return bottom > 0 && viewportHeight > top
     }
+    document.onscroll = function(event) {
+      let cur = isInView(el)
+      if (cur !== inView) {
+        console.log({isIntersecting: cur})
+      }
+      inView = cur
+    }
+
+
 
   </script>
 </body>
