@@ -3,25 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>getBoundingClientReact</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-    .placeholder {
-      height: 120vh;
-      width: 400px;
-      background-color: #c0c0c0;
-    }
-    #rect {
-      height: 1000px;
-      width: 400px;
-      background-color: #2c3e50;
-    }
-  </style>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .placeholder {
+            height: 120vh;
+            width: 400px;
+            background-color: #c0c0c0;
+        }
+
+        #rect {
+            height: 1000px;
+            width: 400px;
+            background-color: #2c3e50;
+        }
+
+        .status {
+            color: white;
+            padding: 10px 50px;
+            border-radius: 10px;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+        }
+
+        .status.in {
+            background: #53c5ff;
+        }
+
+        .status.out {
+            background: coral;
+        }
+    </style>
 
 </head>
 <body>
+    <span class="status in">是否在视窗内？</span>
   <div class="placeholder"></div>
   <div id="rect"></div>
   <div class="placeholder"></div>
@@ -36,7 +56,14 @@
     document.onscroll = function(event) {
       let cur = isInView(el)
       if (cur !== inView) {
-        console.log({isIntersecting: cur})
+        const statusDom = document.getElementsByClassName('status')[0]
+        if (cur) {
+          statusDom.className = 'status in'
+          statusDom.innerText = '在屏幕内'
+        } else {
+          statusDom.className = 'status out'
+          statusDom.innerText = '不在屏幕内'
+        }
       }
       inView = cur
     }
