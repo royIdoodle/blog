@@ -31,6 +31,8 @@
 
 ### Express和Koa、EggJS
 
+![express vs koa vs eggjs](http://image.wangchong.tech/e-k-e-logos.png)
+
  * `Express`本人用了多年，做过两个运行多年的大型项目，但事实上用的很痛苦。每次的请求实例都是通过参数一层层传递的，所有错误也要一层层传递出来。用起来很爽，我急需寻找改变。
  
  * `Koa`是`Express`原班人马打造的， 从根源上做解决了Express的很多痛点，但是我需要一个更适合企业级应用的框架
