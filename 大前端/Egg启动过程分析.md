@@ -50,10 +50,10 @@ egg-scripts利用spawn再启动一层`egg-cluster`应用。
 
 #### 涉及到各个模块
 
-egg-cluster => 进程集群维护程序
-egg.Application => EggJS应用程序
-AppWorker => 应用进程实例
-AgentWorker => Agent进程实例
+ * egg-cluster: 进程集群维护程序
+ * egg.Application: EggJS应用程序
+ * AppWorker: 应用进程实例
+ * AgentWorker: Agent进程实例
 
 #### 知识点
  1. 启动`egg-cluster`是调用的是`./lib/master.js`, master继承与`events`
